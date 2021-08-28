@@ -12,10 +12,31 @@ public class PurchaseTest {
         open("http://localhost:8080");
     }
 
+
     @Test
     public void buyTest () {
-        var startPage = new StartPage();
+        StartPage startPage = new StartPage();
         startPage.buyButtonClick();
+        startPage.setCardNumber("4444 4444 4444 4441");
+        startPage.setMonth("08");
+        startPage.setCardHolder("Mike");
+        startPage.setCvc("800");
+        startPage.setYear("22");
+        startPage.confirmButtonClick();
+        startPage.successMesage();
+//        startPage.failedMessage();
+    }
+
+    @Test
+    public void buyTest2 () {
+        StartPage startPage = new StartPage();
         startPage.buyWithCreditButtonClick();
+        startPage.setCardNumber("4444 4444 4444 4444");
+        startPage.setMonth("08");
+        startPage.setCardHolder("Mike");
+        startPage.setCvc("800");
+        startPage.setYear("22");
+        startPage.confirmButtonClick();
+        startPage.failedMessage();
     }
 }
