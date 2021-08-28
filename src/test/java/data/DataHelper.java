@@ -6,6 +6,8 @@ import java.util.Locale;
 
 public class DataHelper {
 
+
+
     public static String generateCity(String locale) {
         Faker faker = new Faker(new Locale(locale));
         return faker.address().cityName();
