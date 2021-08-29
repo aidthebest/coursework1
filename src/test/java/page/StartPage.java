@@ -2,6 +2,7 @@ package page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
@@ -38,6 +39,7 @@ public class StartPage {
         cardNumber.setValue(number);
     }
     public void setMonth (String cardMonth) {
+        month.doubleClick().sendKeys(Keys.DELETE);
         month.setValue(cardMonth);
     }
     public void setYear (String cardYear) {

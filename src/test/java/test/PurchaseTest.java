@@ -1,5 +1,6 @@
 package test;
 
+import data.DataHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.StartPage;
@@ -17,25 +18,24 @@ public class PurchaseTest {
     public void buyTest () {
         StartPage startPage = new StartPage();
         startPage.buyButtonClick();
-        startPage.setCardNumber("4444 4444 4444 4441");
-        startPage.setMonth("08");
-        startPage.setCardHolder("Mike");
-        startPage.setCvc("800");
-        startPage.setYear("22");
+        startPage.setCardNumber(DataHelper.getApproveCard());
+        startPage.setMonth(DataHelper.getMonth());
+        startPage.setCardHolder(DataHelper.getCardHolder());
+        startPage.setCvc(DataHelper.getCvc());
+        startPage.setYear(DataHelper.getYear());
         startPage.confirmButtonClick();
         startPage.successMesage();
-//        startPage.failedMessage();
     }
 
     @Test
     public void buyTest2 () {
         StartPage startPage = new StartPage();
         startPage.buyWithCreditButtonClick();
-        startPage.setCardNumber("4444 4444 4444 4444");
-        startPage.setMonth("08");
-        startPage.setCardHolder("Mike");
-        startPage.setCvc("800");
-        startPage.setYear("22");
+        startPage.setCardNumber(DataHelper.getRandomCardNumber());
+        startPage.setMonth(DataHelper.getMonth());
+        startPage.setCardHolder(DataHelper.getCardHolder());
+        startPage.setCvc(DataHelper.getCvc());
+        startPage.setYear(DataHelper.getYear());
         startPage.confirmButtonClick();
         startPage.failedMessage();
     }
