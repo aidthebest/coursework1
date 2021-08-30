@@ -60,4 +60,8 @@ public class StartPage {
         $$("[class=notification__content]").get(1).shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Ошибка! Банк отказал в проведении операции."));
     }
 
+    public void wrongFormatMessage () {
+        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14));
+    }
+
 }
