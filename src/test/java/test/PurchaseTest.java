@@ -1,11 +1,13 @@
 package test;
 
 import data.DataHelper;
+import data.DbInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.StartPage;
 
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PurchaseTest {
     @BeforeEach
@@ -25,6 +27,20 @@ public class PurchaseTest {
         startPage.setYear(DataHelper.getYear());
         startPage.confirmButtonClick();
         startPage.successMesage();
+    }
+
+    @Test
+    public void buyTestApproveCard2 () {
+        StartPage startPage = new StartPage();
+        startPage.buyWithCreditButtonClick();
+        startPage.setCardNumber(DataHelper.getDeclineCard());
+        startPage.setMonth(DataHelper.getMonth());
+        startPage.setCardHolder(DataHelper.getCardHolder());
+        startPage.setCvc(DataHelper.getCvc());
+        startPage.setYear(DataHelper.getYear());
+        startPage.confirmButtonClick();
+        startPage.successMesage();
+        assertEquals("DECLINED", DbInfo.getStatusCredit("postgresql"));
     }
 
     @Test
