@@ -22,8 +22,10 @@ public class DataHelper {
 
     public static String getCardHolder() {
         Faker faker = new Faker(new Locale("en"));
-        return faker.name().fullName();
-    }
+        var firstname= faker.name().firstName();
+        var lastname = faker.name().lastName();
+        return firstname+" "+lastname;
+    };
 
     public static String getYear() {
         return String.valueOf(Math.random()*(26-22) + 22);

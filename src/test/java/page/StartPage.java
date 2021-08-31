@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class StartPage {
-    private SelenideElement heading = $("[class=\"App_appContainer__3jRx1\"]");
+    private SelenideElement heading = $("[class=\"Order_cardImage__Q69ii\"]");
     private SelenideElement buyButton = $(withText("Купить"));
     private SelenideElement buyWithCreditButton = $(withText("Купить в кредит"));
     private SelenideElement confirmButton = $(withText("Продолжить"));
