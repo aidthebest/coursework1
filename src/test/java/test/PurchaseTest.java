@@ -1,7 +1,11 @@
 package test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import data.DataHelper;
 import data.DbInfo;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.StartPage;
@@ -13,6 +17,15 @@ public class PurchaseTest {
     @BeforeEach
     public void setUp() {
         open("http://localhost:8080");
+    }
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
     }
 
 
@@ -40,7 +53,7 @@ public class PurchaseTest {
         startPage.setYear(DataHelper.getYear());
         startPage.confirmButtonClick();
         startPage.successMesage();
-        assertEquals("DECLINED", DbInfo.getStatusCredit("postgresql"));
+        assertEquals("DECLINED", DbInfo.getStatusCredit("my"));
     }
 
     @Test

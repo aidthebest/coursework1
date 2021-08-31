@@ -2,6 +2,7 @@ package data;
 
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,8 +35,8 @@ public class DbInfo {
     public static String getStatusCredit (String base) {
         var conn = getConnection(base);
         QueryRunner qr=new QueryRunner();
-        String status = String.valueOf(qr.execute(conn, "select status from credit_request_entity where created = (select max(created) from credit_request_entity)"));
-        return status;
+        var status = "select status from credit_request_entity where created = (select max(created) from credit_request_entity);";
+        return qr.query(conn, status, new ScalarHandler<>());
     }
 
 
