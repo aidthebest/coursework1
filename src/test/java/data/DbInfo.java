@@ -14,17 +14,15 @@ public class DbInfo {
     }
 
     @SneakyThrows
-    private static Connection getConnection(String base) {
-        if (base.equalsIgnoreCase("postgresql")) {
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/stage", "postgres", "secret");
-        } else {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
-        }
+    private static Connection getConnection() {
+        System.getProperty("datasource.url");
+        var property = System.getProperty("datasource.url");
+        return DriverManager.getConnection(property, "app", "pass");
     }
 
     @SneakyThrows
-    public static void cleanDB(String base) {
-        var conn = getConnection(base);
+    public static void cleanDB() {
+        var conn = getConnection();
         QueryRunner qr=new QueryRunner();
         qr.execute(conn,"delete from credit_request_entity");
         qr.execute(conn,"delete from order_entity");
@@ -32,9 +30,9 @@ public class DbInfo {
     }
 
     @SneakyThrows
-    public static String getStatusCredit (String base) {
-        var conn = getConnection(base);
-        QueryRunner qr=new QueryRunner();
+    public static String getStatusCredit () {
+        var conn = getConnection();
+        QueryRunner qr = new QueryRunner();
         var status = "select status from credit_request_entity where created = (select max(created) from credit_request_entity);";
         return qr.query(conn, status, new ScalarHandler<>());
     }
