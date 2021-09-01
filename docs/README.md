@@ -22,8 +22,13 @@
 
 ## Лицензия
 
-Опишите условия лицензии
+Свободная
 
+## Документация к проекту
+
+1. План тестирования - https://github.com/aidthebest/coursework1/blob/master/docs/Plan.md
+2. Отчетные документы по итогам автоматизирвоанного тестирования - 
+3. Отчетные документы по итогам автоматизации - 
 
 
 [comment]: <> (java -jar artifacts/aqa-shop.jar --spring.config.location=./application.postgres.properties)

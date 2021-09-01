@@ -37,6 +37,14 @@ public class DbInfo {
         return qr.query(conn, status, new ScalarHandler<>());
     }
 
+    @SneakyThrows
+    public static String getStatusDebitCard () {
+        var conn = getConnection();
+        QueryRunner qr = new QueryRunner();
+        var status = "select status from payment_entity where created = (select max(created) from payment_entity);";
+        return qr.query(conn, status, new ScalarHandler<>());
+    }
+
 
 
 }

@@ -41,6 +41,11 @@ public class DataHelper {
         return faker.numerify("###");
     }
 
+    public static String getFakeCvc() {
+        Faker faker = new Faker(new Locale("en"));
+        return faker.numerify("##");
+    }
+
     public static String getFakeValue () {
         Faker faker = new Faker(new Locale("en"));
         return faker.internet().password(1, 15, true, true, true);
