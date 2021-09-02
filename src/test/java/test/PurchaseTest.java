@@ -35,6 +35,13 @@ public class PurchaseTest {
 //        BuyPage bp = new BuyPage();
 //    }
 
+    @Test
+    public void cleanBuyForm () {
+        StartPage startPage = new StartPage();
+        startPage.buyButtonClick();
+        startPage.confirmButtonClick();
+        startPage.wrongFormatMessage();
+    }
 
     @Test
     public void buyTestApproveCard () {
@@ -142,6 +149,13 @@ public class PurchaseTest {
         startPage.wrongFormatMessage();
     }
 
+    @Test
+    public void cleanBuyWithCreditForm () {
+        StartPage startPage = new StartPage();
+        startPage.buyWithCreditButtonClick();
+        startPage.confirmButtonClick();
+        startPage.wrongFormatMessage();
+    }
 
     @Test
     public void buyTestApproveCreditCard () {
