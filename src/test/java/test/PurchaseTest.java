@@ -28,6 +28,13 @@ public class PurchaseTest {
         SelenideLogger.removeListener("allure");
     }
 
+//    @Test
+//    public void BuyPageTest () {
+//        StartPage startPage = new StartPage();
+//        startPage.buyButtonClick();
+//        BuyPage bp = new BuyPage();
+//    }
+
 
     @Test
     public void buyTestApproveCard () {
