@@ -7,20 +7,24 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class PurchasePage {
-    private SelenideElement buyButton = $(withText("Купить"));
+    private static SelenideElement buyButton = $(withText("Купить"));
     private SelenideElement buyWithCreditButton = $(withText("Купить в кредит"));
     private SelenideElement confirmButton = $(withText("Продолжить"));
 
 
-    public PurchasePage () {
+    public PurchasePage() {
         buyButton.shouldBe(Condition.visible);
         buyWithCreditButton.shouldBe(Condition.visible);
         confirmButton.shouldBe(Condition.not(Condition.visible));
     }
-    public void buyButtonClick () {
+
+    public BuyPage buyButtonClick() {
         buyButton.click();
+        return new BuyPage();
     }
-    public void buyWithCreditButtonClick () {
+
+    public BuyWithCreditPage buyWithCreditButtonClick() {
         buyWithCreditButton.click();
+        return new BuyWithCreditPage();
     }
 }

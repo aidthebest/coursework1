@@ -15,18 +15,8 @@ public class DbInfo {
 
     @SneakyThrows
     private static Connection getConnection() {
-        System.getProperty("datasource.url");
         var property = System.getProperty("datasource.url");
         return DriverManager.getConnection(property, "app", "pass");
-    }
-
-    @SneakyThrows
-    public static void cleanDB() {
-        var conn = getConnection();
-        QueryRunner qr=new QueryRunner();
-        qr.execute(conn,"delete from credit_request_entity");
-        qr.execute(conn,"delete from order_entity");
-        qr.execute(conn,"delete from payment_entity");
     }
 
     @SneakyThrows
