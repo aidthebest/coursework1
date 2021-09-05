@@ -38,6 +38,20 @@ public class DataHelper {
         return String.valueOf((Integer.parseInt(localDate) + x));
     }
 
+    public static String getInvalidYearAbove() {
+        Random random = new Random();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy");
+        var localDate = LocalDate.now().format(formatter);
+        return String.valueOf((Integer.parseInt(localDate) + (random.nextInt(99) + 6)));
+    }
+
+    public static String getInvalidYearBefore() {
+        Random random = new Random();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy");
+        var localDate = LocalDate.now().format(formatter);
+        return String.valueOf((Integer.parseInt(localDate) - (random.nextInt(99) + 6)));
+    }
+
     public static String getMonth() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");
         var localDate = LocalDate.now().format(formatter);
@@ -46,6 +60,18 @@ public class DataHelper {
             return String.format("%02d", random.nextInt(12 - Integer.parseInt(localDate)) + Integer.parseInt(localDate));
         } else {
             return String.format("%02d", random.nextInt(11) + 1);
+        }
+    }
+
+    public static String getInvalidMonth() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");
+        var localDate = LocalDate.now().format(formatter);
+        Random random = new Random();
+        if (DataHelper.getMonth().equals(String.valueOf(LocalDate.now().getMonth())) &&
+                DataHelper.getYear().equals(String.valueOf(LocalDate.now().getYear()))) {
+            return String.format("%02d", (Integer.parseInt(localDate) - (random.nextInt(12 - Integer.parseInt(localDate)))));
+        } else {
+            return String.format("%02d", random.nextInt(87) + 13);
         }
     }
 
@@ -59,7 +85,12 @@ public class DataHelper {
         return faker.numerify("##");
     }
 
-    public static String getFakeValue() {
+    public static String getFakeHolder() {
+        Faker faker = new Faker(new Locale("en"));
+        return faker.internet().password(1, 15, true, true, true);
+    }
+
+    public static String getFakeCardNumber() {
         Faker faker = new Faker(new Locale("en"));
         return faker.internet().password(1, 15, true, true, true);
     }

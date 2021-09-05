@@ -70,6 +70,10 @@ public class BuyWithCreditPage {
     }
 
     public void wrongFormatMessage() {
-        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14));
+        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+    }
+
+    public void clearCardHolderFieldMessage() {
+        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
 }

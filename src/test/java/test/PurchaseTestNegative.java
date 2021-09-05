@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class PurchaseTest {
+public class PurchaseTestNegative {
 
     PurchasePage purchasePage;
 
@@ -39,19 +39,6 @@ public class PurchaseTest {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.confirmButtonClick();
         buyPage.wrongFormatMessage();
-    }
-
-    @Test
-    public void buyTestApproveCard() {
-        var buyPage = purchasePage.buyButtonClick();
-        buyPage.setCardNumber(DataHelper.getApproveCard());
-        buyPage.setMonth(DataHelper.getMonth());
-        buyPage.setCardHolder(DataHelper.getCardHolder());
-        buyPage.setCvc(DataHelper.getCvc());
-        buyPage.setYear(DataHelper.getYear());
-        buyPage.confirmButtonClick();
-        buyPage.successMesage();
-        assertEquals("APPROVED", DbInfo.getStatusDebitCard());
     }
 
     @Test
@@ -82,7 +69,7 @@ public class PurchaseTest {
     @Test
     public void buyTestFakeDebitCardNumber() {
         var buyPage = purchasePage.buyButtonClick();
-        buyPage.setCardNumber(DataHelper.getFakeValue());
+        buyPage.setCardNumber(DataHelper.getFakeCardNumber());
         buyPage.setMonth(DataHelper.getMonth());
         buyPage.setCardHolder(DataHelper.getCardHolder());
         buyPage.setCvc(DataHelper.getCvc());
@@ -96,7 +83,7 @@ public class PurchaseTest {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setMonth(DataHelper.getMonth());
-        buyPage.setCardHolder(DataHelper.getFakeValue());
+        buyPage.setCardHolder(DataHelper.getFakeHolder());
         buyPage.setCvc(DataHelper.getCvc());
         buyPage.setYear(DataHelper.getYear());
         buyPage.confirmButtonClick();
@@ -119,7 +106,7 @@ public class PurchaseTest {
     public void buyTestFakeDebitCardMonth() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
-        buyPage.setMonth(DataHelper.getFakeValue());
+        buyPage.setMonth(DataHelper.getInvalidMonth());
         buyPage.setCardHolder(DataHelper.getCardHolder());
         buyPage.setCvc(DataHelper.getCvc());
         buyPage.setYear(DataHelper.getYear());
@@ -134,7 +121,7 @@ public class PurchaseTest {
         buyPage.setMonth(DataHelper.getMonth());
         buyPage.setCardHolder(DataHelper.getCardHolder());
         buyPage.setCvc(DataHelper.getCvc());
-        buyPage.setYear(DataHelper.getFakeValue());
+        buyPage.setYear(DataHelper.getInvalidYearAbove());
         buyPage.confirmButtonClick();
         buyPage.wrongFormatMessage();
     }
@@ -144,19 +131,6 @@ public class PurchaseTest {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
         buyWithCreditPage.confirmButtonClick();
         buyWithCreditPage.wrongFormatMessage();
-    }
-
-    @Test
-    public void buyTestApproveCreditCard() {
-        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
-        buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
-        buyWithCreditPage.setMonth(DataHelper.getMonth());
-        buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
-        buyWithCreditPage.setCvc(DataHelper.getCvc());
-        buyWithCreditPage.setYear(DataHelper.getYear());
-        buyWithCreditPage.confirmButtonClick();
-        buyWithCreditPage.successMesage();
-        assertEquals("APPROVED", DbInfo.getStatusCredit());
     }
 
     @Test
@@ -187,7 +161,7 @@ public class PurchaseTest {
     @Test
     public void buyTestFakeCreditCardNumber() {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
-        buyWithCreditPage.setCardNumber(DataHelper.getFakeValue());
+        buyWithCreditPage.setCardNumber(DataHelper.getFakeCardNumber());
         buyWithCreditPage.setMonth(DataHelper.getMonth());
         buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
         buyWithCreditPage.setCvc(DataHelper.getCvc());
@@ -201,7 +175,7 @@ public class PurchaseTest {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
         buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
         buyWithCreditPage.setMonth(DataHelper.getMonth());
-        buyWithCreditPage.setCardHolder(DataHelper.getFakeValue());
+        buyWithCreditPage.setCardHolder(DataHelper.getFakeHolder());
         buyWithCreditPage.setCvc(DataHelper.getCvc());
         buyWithCreditPage.setYear(DataHelper.getYear());
         buyWithCreditPage.confirmButtonClick();
@@ -224,7 +198,7 @@ public class PurchaseTest {
     public void buyTestFakeCreditCardMonth() {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
         buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
-        buyWithCreditPage.setMonth(DataHelper.getFakeValue());
+        buyWithCreditPage.setMonth(DataHelper.getInvalidMonth());
         buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
         buyWithCreditPage.setCvc(DataHelper.getCvc());
         buyWithCreditPage.setYear(DataHelper.getYear());
@@ -239,7 +213,7 @@ public class PurchaseTest {
         buyWithCreditPage.setMonth(DataHelper.getMonth());
         buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
         buyWithCreditPage.setCvc(DataHelper.getCvc());
-        buyWithCreditPage.setYear(DataHelper.getFakeValue());
+        buyWithCreditPage.setYear(DataHelper.getInvalidYearAbove());
         buyWithCreditPage.confirmButtonClick();
         buyWithCreditPage.wrongFormatMessage();
     }
