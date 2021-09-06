@@ -81,6 +81,17 @@ public class PurchaseWithCreditNegativeTest {
     }
 
     @Test
+    public void buyTestEmptyCreditCardNumberField() {
+        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
+        buyWithCreditPage.setMonth(DataHelper.getMonth());
+        buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
+        buyWithCreditPage.setCvc(DataHelper.getCvc());
+        buyWithCreditPage.setYear(DataHelper.getYear());
+        buyWithCreditPage.confirmButtonClick();
+        buyWithCreditPage.failedCreditCardNumberField();
+    }
+
+    @Test
     public void buyTestFakeCreditCardHolder() {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
         buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
@@ -90,6 +101,17 @@ public class PurchaseWithCreditNegativeTest {
         buyWithCreditPage.setYear(DataHelper.getYear());
         buyWithCreditPage.confirmButtonClick();
         buyWithCreditPage.wrongFormatMessage();
+    }
+
+    @Test
+    public void buyTestEmptyCreditCardHolderField() {
+        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
+        buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
+        buyWithCreditPage.setMonth(DataHelper.getMonth());
+        buyWithCreditPage.setCvc(DataHelper.getCvc());
+        buyWithCreditPage.setYear(DataHelper.getYear());
+        buyWithCreditPage.confirmButtonClick();
+        buyWithCreditPage.emptyCardHolderFieldMessage();
     }
 
     @Test

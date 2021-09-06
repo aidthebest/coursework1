@@ -91,6 +91,17 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
+    public void buyTestEmptyCardHolderField() {
+        var buyPage = purchasePage.buyButtonClick();
+        buyPage.setCardNumber(DataHelper.getApproveCard());
+        buyPage.setMonth(DataHelper.getMonth());
+        buyPage.setCvc(DataHelper.getCvc());
+        buyPage.setYear(DataHelper.getYear());
+        buyPage.confirmButtonClick();
+        buyPage.emptyCardHolderFieldMessage();
+    }
+
+    @Test
     public void buyTestFakeDebitCardCvc() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());

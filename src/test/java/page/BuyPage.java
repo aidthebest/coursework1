@@ -20,6 +20,12 @@ public class BuyPage {
     private static SelenideElement code = $$("[class=input__control]").get(4);
     private SelenideElement heading = $(withText("Оплата по карте"));
 
+    private SelenideElement cardNumberErrorField = $("[class=input__sub]");
+    private SelenideElement monthErrorField = $$("[class=input__sub]").get(1);
+    private SelenideElement yearErrorField = $$("[class=input__sub]").get(2);
+    private SelenideElement cvcErrorField = $$("[class=input__sub]").get(4);
+
+
     public void confirmButtonClick() {
         confirmButton.click();
     }
@@ -58,8 +64,24 @@ public class BuyPage {
         $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
     }
 
-    public void clearCardHolderFieldMessage() {
+    public void emptyCardHolderFieldMessage() {
         $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Поле обязательно для заполнения"));
+    }
+
+    public void failedCardNumberField() {
+        cardNumberErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+    }
+
+    public void failedCardMonthField() {
+        monthErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+    }
+
+    public void failedCardYearField() {
+        yearErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+    }
+
+    public void failedCardCvcField() {
+        cvcErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
     }
 
     public BuyPage() {
