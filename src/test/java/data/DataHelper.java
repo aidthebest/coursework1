@@ -33,24 +33,37 @@ public class DataHelper {
 
     public static String getYear() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy");
-        var localDate = LocalDate.now().format(formatter);
-        int x = (int) (Math.random() * (6));
-        return String.valueOf((Integer.parseInt(localDate) + x));
+        int validYearAdd = (int) (Math.random() * (6));
+        return LocalDate.now().plusYears(validYearAdd).format(formatter);
     }
 
     public static String getInvalidYearAbove() {
-        Random random = new Random();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy");
-        var localDate = LocalDate.now().format(formatter);
-        return String.valueOf((Integer.parseInt(localDate) + (random.nextInt(99) + 6)));
+        int minDifference = 6;
+        int maxDifference = 94;
+        maxDifference -= minDifference;
+        int year = (int) ((Math.random() * ++maxDifference) + minDifference);
+        return LocalDate.now().plusYears(year).format(formatter);
     }
 
     public static String getInvalidYearBefore() {
-        Random random = new Random();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy");
-        var localDate = LocalDate.now().format(formatter);
-        return String.valueOf((Integer.parseInt(localDate) - (random.nextInt(99) + 6)));
+        int randomYear = Integer.parseInt(LocalDate.now().format(formatter));
+        int minusYear = (int) (Math.random() * (randomYear + 1));
+        return LocalDate.now().minusYears(minusYear).format(formatter);
     }
+
+
+    public static String getyearTEST(int year) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy");
+        return LocalDate.now().plusYears(year).format(formatter);
+    }
+
+    public static String getMonthTEST(int month) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");
+        return LocalDate.now().plusMonths(month).format(formatter);
+    }
+
 
     public static String getMonth() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");

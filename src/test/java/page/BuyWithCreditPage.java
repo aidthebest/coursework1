@@ -12,9 +12,6 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class BuyWithCreditPage {
 
-
-//    private SelenideElement buyButton = $(withText("Купить"));
-//    private SelenideElement buyWithCreditButton = $(withText("Купить в кредит"));
     private SelenideElement confirmButton = $(withText("Продолжить"));
     private SelenideElement cardNumber = $("[class=input__control]");
     private SelenideElement month = $$("[class=input__control]").get(1);
@@ -26,14 +23,6 @@ public class BuyWithCreditPage {
     public BuyWithCreditPage() {
         heading.shouldBe(Condition.visible);
     }
-
-//    public void buyButtonClick() {
-//        buyButton.click();
-//    }
-//
-//    public void buyWithCreditButtonClick() {
-//        buyWithCreditButton.click();
-//    }
 
     public void confirmButtonClick() {
         confirmButton.click();
