@@ -20,11 +20,16 @@ public class BuyPage {
     private static SelenideElement code = $$("[class=input__control]").get(4);
     private SelenideElement heading = $(withText("Оплата по карте"));
 
-    private SelenideElement cardNumberErrorField = $("[class=input__sub]");
-    private SelenideElement monthErrorField = $$("[class=input__sub]").get(1);
-    private SelenideElement yearErrorField = $$("[class=input__sub]").get(2);
-    private SelenideElement cvcErrorField = $$("[class=input__sub]").get(4);
+    private SelenideElement cardNumberErrorField = $("[class=input__inner]").$("[class=input__sub]");
+    private SelenideElement monthErrorField = $$("[class=input__inner]").get(1).$("[class=input__sub]");
+    private SelenideElement yearErrorField = $$("[class=input__inner]").get(2).$("[class=input__sub]");
+    private SelenideElement cvcErrorField = $$("[class=input__inner]").get(4).$("[class=input__sub]");
 
+
+
+    public BuyPage() {
+        heading.shouldBe(Condition.visible);
+    }
 
     public void confirmButtonClick() {
         confirmButton.click();
@@ -68,23 +73,23 @@ public class BuyPage {
         $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
 
+    public void failedCardHolderMessage () {
+        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+    }
+
     public void failedCardNumberField() {
-        cardNumberErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+        cardNumberErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14));
     }
 
     public void failedCardMonthField() {
-        monthErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+        monthErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14));
     }
 
     public void failedCardYearField() {
-        yearErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+        yearErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14));
     }
 
     public void failedCardCvcField() {
-        cvcErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
-    }
-
-    public BuyPage() {
-        heading.shouldBe(Condition.visible);
+        cvcErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14));
     }
 }

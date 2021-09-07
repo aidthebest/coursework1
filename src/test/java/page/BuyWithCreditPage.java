@@ -6,7 +6,7 @@ import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selectors.withText;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -20,10 +20,11 @@ public class BuyWithCreditPage {
     private SelenideElement code = $$("[class=input__control]").get(4);
     private SelenideElement heading = $(withText("Кредит по данным карты"));
 
-    private SelenideElement cardNumberErrorField = $("[class=input__sub]");
-    private SelenideElement monthErrorField = $$("[class=input__sub]").get(1);
-    private SelenideElement yearErrorField = $$("[class=input__sub]").get(2);
-    private SelenideElement cvcErrorField = $$("[class=input__sub]").get(4);
+    private SelenideElement cardNumberErrorField = $("[class=input__inner]").$("[class=input__sub]");
+    private SelenideElement monthErrorField = $$("[class=input__inner]").get(1).$("[class=input__sub]");
+    private SelenideElement yearErrorField = $$("[class=input__inner]").get(2).$("[class=input__sub]");
+    private SelenideElement cvcErrorField = $$("[class=input__inner]").get(4).$("[class=input__sub]");
+
 
 
     public BuyWithCreditPage() {
@@ -72,19 +73,23 @@ public class BuyWithCreditPage {
         $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
 
+    public void failedCreditCardHolderMessage () {
+        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+    }
+
     public void failedCreditCardNumberField() {
-        cardNumberErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+        cardNumberErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14));
     }
 
     public void failedCreditCardMonthField() {
-        monthErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+        monthErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14));
     }
 
     public void failedCreditCardYearField() {
-        yearErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+        yearErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14));
     }
 
     public void failedCreditCardCvcField() {
-        cvcErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+        cvcErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14));
     }
 }

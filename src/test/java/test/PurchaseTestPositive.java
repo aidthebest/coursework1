@@ -37,10 +37,10 @@ public class PurchaseTestPositive {
     public void buyTestApproveCard() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
-        buyPage.setMonth(DataHelper.getMonth());
+        buyPage.setMonth(DataHelper.generateDate(1).getMonth());
         buyPage.setCardHolder(DataHelper.getCardHolder());
         buyPage.setCvc(DataHelper.getCvc());
-        buyPage.setYear(DataHelper.getYear());
+        buyPage.setYear(DataHelper.generateDate(13).getYear());
         buyPage.confirmButtonClick();
         buyPage.successMesage();
         assertEquals("APPROVED", DbInfo.getStatusDebitCard());
@@ -50,10 +50,10 @@ public class PurchaseTestPositive {
     public void buyTestApproveCreditCard() {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
         buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
-        buyWithCreditPage.setMonth(DataHelper.getMonth());
+        buyWithCreditPage.setMonth(DataHelper.generateDate(1).getMonth());
         buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
         buyWithCreditPage.setCvc(DataHelper.getCvc());
-        buyWithCreditPage.setYear(DataHelper.getYear());
+        buyWithCreditPage.setYear(DataHelper.generateDate(13).getYear());
         buyWithCreditPage.confirmButtonClick();
         buyWithCreditPage.successMesage();
         assertEquals("APPROVED", DbInfo.getStatusCredit());
