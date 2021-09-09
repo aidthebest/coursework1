@@ -17,6 +17,7 @@ public class PurchaseWithCreditNegativeTest {
 
     PurchasePage purchasePage;
 
+
     @BeforeEach
     void setUp() {
         open("http://localhost:8080");
@@ -127,7 +128,18 @@ public class PurchaseWithCreditNegativeTest {
     }
 
     @Test
-    public void buyTestFakeCreditCardMonth() {
+    public void emptyCreditCardCvcField() {
+        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
+        buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
+        buyWithCreditPage.setMonth(DataHelper.generateDate(1).getMonth());
+        buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
+        buyWithCreditPage.setYear(DataHelper.generateDate(13).getYear());
+        buyWithCreditPage.confirmButtonClick();
+        buyWithCreditPage.failedCreditCardCvcField();
+    }
+
+    @Test
+    public void creditCardMonthExpired() {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
         buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
         buyWithCreditPage.setMonth(DataHelper.generateDate(-1).getMonth());
@@ -139,7 +151,42 @@ public class PurchaseWithCreditNegativeTest {
     }
 
     @Test
-    public void buyTestFakeCreditCardYearAbove() {
+    public void fakeCreditCardMonth() {
+        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
+        buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
+        buyWithCreditPage.setMonth("13");
+        buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
+        buyWithCreditPage.setCvc(DataHelper.getCvc());
+        buyWithCreditPage.setYear(DataHelper.generateDate(0).getYear());
+        buyWithCreditPage.confirmButtonClick();
+        buyWithCreditPage.failedCreditCardMonthField();
+    }
+
+    @Test
+    public void creditCardZaroMonth() {
+        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
+        buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
+        buyWithCreditPage.setMonth("00");
+        buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
+        buyWithCreditPage.setCvc(DataHelper.getCvc());
+        buyWithCreditPage.setYear(DataHelper.generateDate(0).getYear());
+        buyWithCreditPage.confirmButtonClick();
+        buyWithCreditPage.failedCreditCardMonthField();
+    }
+
+    @Test
+    public void creditCardEmptyMonthField() {
+        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
+        buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
+        buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
+        buyWithCreditPage.setCvc(DataHelper.getCvc());
+        buyWithCreditPage.setYear(DataHelper.generateDate(0).getYear());
+        buyWithCreditPage.confirmButtonClick();
+        buyWithCreditPage.wronwCreditCardMonthField();
+    }
+
+    @Test
+    public void creditCardYearAbove() {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
         buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
         buyWithCreditPage.setMonth(DataHelper.generateDate(13).getMonth());
@@ -147,11 +194,11 @@ public class PurchaseWithCreditNegativeTest {
         buyWithCreditPage.setCvc(DataHelper.getCvc());
         buyWithCreditPage.setYear(DataHelper.generateDate(85).getYear());
         buyWithCreditPage.confirmButtonClick();
-        buyWithCreditPage.failedCreditCardYearField();
+        buyWithCreditPage.wrongdCreditCardYearField();
     }
 
     @Test
-    public void buyTestFakeCreditCardYearBefore() {
+    public void creditCardYearExpired() {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
         buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
         buyWithCreditPage.setMonth(DataHelper.generateDate(13).getMonth());
@@ -161,4 +208,16 @@ public class PurchaseWithCreditNegativeTest {
         buyWithCreditPage.confirmButtonClick();
         buyWithCreditPage.failedCreditCardYearField();
     }
+
+    @Test
+    public void emptyeCreditCardYearField() {
+        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
+        buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
+        buyWithCreditPage.setMonth(DataHelper.generateDate(1).getMonth());
+        buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
+        buyWithCreditPage.setCvc(DataHelper.getCvc());
+        buyWithCreditPage.confirmButtonClick();
+        buyWithCreditPage.emptyCreditCardYearField();
+    }
+
 }
