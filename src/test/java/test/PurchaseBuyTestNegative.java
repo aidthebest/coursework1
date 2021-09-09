@@ -216,4 +216,31 @@ public class PurchaseBuyTestNegative {
         buyPage.confirmButtonClick();
         buyPage.emptyCardYearField();
     }
+
+    @Test
+    public void cleanAllFields () {
+        var buyPage = purchasePage.buyButtonClick();
+        buyPage.setCardNumber(DataHelper.getFakeCardNumber());
+        buyPage.setYear(DataHelper.generateDate(-60).getYear());
+        buyPage.setMonth(DataHelper.generateDate(-1).getMonth());
+        buyPage.setCardHolder(DataHelper.getFakeHolder());
+        buyPage.setCvc(DataHelper.getFakeCvc());
+        buyPage.confirmButtonClick();
+        buyPage.cleanAllFormFields();
+        buyPage.withOutExaption();
+    }
+
+    @Test
+    public void cleanAllFields2 () {
+        var buyPage = purchasePage.buyButtonClick();
+        buyPage.setCardNumber(DataHelper.getApproveCard());
+        buyPage.setYear(DataHelper.generateDate(5).getYear());
+        buyPage.setMonth(DataHelper.generateDate(3).getMonth());
+        buyPage.setCardHolder(DataHelper.getCardHolder());
+        buyPage.setCvc(DataHelper.getCvc());
+        buyPage.confirmButtonClick();
+        buyPage.successMesage();
+        buyPage.cleanAllFormFields();
+        buyPage.withOutExaption();
+    }
 }

@@ -2,13 +2,15 @@ package page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.openqa.selenium.Keys.CONTROL;
+import static org.openqa.selenium.Keys.DELETE;
 
 public class BuyPage {
 
@@ -18,17 +20,25 @@ public class BuyPage {
     private static SelenideElement year = $$("[class=input__control]").get(2);
     private static SelenideElement cardHolder = $$("[class=input__control]").get(3);
     private static SelenideElement code = $$("[class=input__control]").get(4);
-    private SelenideElement heading = $(withText("Оплата по карте"));
 
-    private SelenideElement cardNumberErrorField = $(withText("Номер карты")).parent().$("[class=input__sub]");
-    private SelenideElement monthErrorField = $(withText("Месяц")).parent().$("[class=input__sub]");
-    private SelenideElement yearErrorField = $(withText("Год")).parent().$("[class=input__sub]");
-    private SelenideElement cvcErrorField = $(withText("CVC/CVV")).parent().$("[class=input__sub]");
+    private static SelenideElement heading = $(withText("Оплата по карте"));
+    private static SelenideElement cardNumberErrorField = $(withText("Номер карты")).parent().$("[class=input__sub]");
+    private static SelenideElement monthErrorField = $(withText("Месяц")).parent().$("[class=input__sub]");
+    private static SelenideElement yearErrorField = $(withText("Год")).parent().$("[class=input__sub]");
+    private static SelenideElement cvcErrorField = $(withText("CVC/CVV")).parent().$("[class=input__sub]");
 
-
+    private static SelenideElement exeptionMessage = $("[class=input__sub]");
 
     public BuyPage() {
         heading.shouldBe(Condition.visible);
+    }
+
+    public void cleanAllFormFields () {
+    cardNumber.doubleClick().sendKeys(CONTROL + "A", DELETE);
+        month.doubleClick().sendKeys(DELETE);
+        year.doubleClick().sendKeys(DELETE);
+        cardHolder.doubleClick().sendKeys(CONTROL + "A", DELETE);
+        code.doubleClick().sendKeys(DELETE);
     }
 
     public void confirmButtonClick() {
@@ -41,7 +51,7 @@ public class BuyPage {
     }
 
     public void setMonth(String cardMonth) {
-        month.doubleClick().sendKeys(Keys.DELETE);
+        month.doubleClick().sendKeys(DELETE);
         month.setValue(cardMonth);
     }
 
@@ -103,5 +113,9 @@ public class BuyPage {
 
     public void failedCardCvcField() {
         cvcErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+    }
+
+    public void withOutExaption () {
+        assertFalse(exeptionMessage.isDisplayed());
     }
 }

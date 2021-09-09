@@ -220,4 +220,31 @@ public class PurchaseWithCreditNegativeTest {
         buyWithCreditPage.emptyCreditCardYearField();
     }
 
+    @Test
+    public void cleanAllFieldsWithErrors () {
+        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
+        buyWithCreditPage.setCardNumber(DataHelper.getFakeCardNumber());
+        buyWithCreditPage.setYear(DataHelper.generateDate(-60).getYear());
+        buyWithCreditPage.setMonth(DataHelper.generateDate(-1).getMonth());
+        buyWithCreditPage.setCardHolder(DataHelper.getFakeHolder());
+        buyWithCreditPage.setCvc(DataHelper.getFakeCvc());
+        buyWithCreditPage.confirmButtonClick();
+        buyWithCreditPage.cleanAllFormFields();
+        buyWithCreditPage.withOutExaption();
+    }
+
+    @Test
+    public void cleanAllFieldsWithoutErrors () {
+        var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
+        buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
+        buyWithCreditPage.setYear(DataHelper.generateDate(5).getYear());
+        buyWithCreditPage.setMonth(DataHelper.generateDate(3).getMonth());
+        buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
+        buyWithCreditPage.setCvc(DataHelper.getCvc());
+        buyWithCreditPage.confirmButtonClick();
+        buyWithCreditPage.successMesage();
+        buyWithCreditPage.cleanAllFormFields();
+        buyWithCreditPage.withOutExaption();
+    }
+
 }

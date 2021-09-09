@@ -9,6 +9,9 @@ import java.time.Duration;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.openqa.selenium.Keys.CONTROL;
+import static org.openqa.selenium.Keys.DELETE;
 
 public class BuyWithCreditPage {
 
@@ -25,16 +28,25 @@ public class BuyWithCreditPage {
     private SelenideElement yearErrorField = $(withText("Год")).parent().$("[class=input__sub]");
     private SelenideElement cvcErrorField = $(withText("CVC/CVV")).parent().$("[class=input__sub]");
 
+    private static SelenideElement exeptionMessage = $("[class=input__sub]");
+
 
 
     public BuyWithCreditPage() {
         heading.shouldBe(Condition.visible);
     }
 
+    public void cleanAllFormFields () {
+        cardNumber.doubleClick().sendKeys(CONTROL + "A", DELETE);
+        month.doubleClick().sendKeys(DELETE);
+        year.doubleClick().sendKeys(DELETE);
+        cardHolder.doubleClick().sendKeys(CONTROL + "A", DELETE);
+        code.doubleClick().sendKeys(DELETE);
+    }
+
     public void confirmButtonClick() {
         confirmButton.click();
     }
-
 
     public void setCardNumber(String number) {
         cardNumber.setValue(number);
@@ -103,5 +115,9 @@ public class BuyWithCreditPage {
 
     public void failedCreditCardCvcField() {
         cvcErrorField.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+    }
+
+    public void withOutExaption () {
+        assertFalse(exeptionMessage.isDisplayed());
     }
 }
