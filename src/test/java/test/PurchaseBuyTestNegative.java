@@ -35,14 +35,14 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void cleanBuyWithCreditForm() {
+    public void cleanBuyForm() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.confirmButtonClick();
         buyPage.wrongFormatMessage();
     }
 
     @Test
-    public void buyTestDeclineCreditCard() {
+    public void buyTestDeclineCard() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getDeclineCard());
         buyPage.setMonth(DataHelper.generateDate(1).getMonth());
@@ -55,7 +55,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void buyTestRandomCreditCardNumber() {
+    public void buyTestRandomCardNumber() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getRandomCardNumber());
         buyPage.setMonth(DataHelper.generateDate(1).getMonth());
@@ -67,7 +67,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void buyTestFakeCreditCardNumber() {
+    public void buyTestFakeCardNumber() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getFakeCardNumber());
         buyPage.setMonth(DataHelper.generateDate(1).getMonth());
@@ -79,7 +79,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void buyTestEmptyCreditCardNumberField() {
+    public void buyTestEmptyCardNumberField() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setMonth(DataHelper.generateDate(13).getMonth());
         buyPage.setCardHolder(DataHelper.getCardHolder());
@@ -90,7 +90,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void buyTestFakeCreditCardHolder() {
+    public void buyTestFakeCardHolder() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setMonth(DataHelper.generateDate(1).getMonth());
@@ -102,7 +102,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void buyTestEmptyCreditCardHolderField() {
+    public void buyTestEmptyCardHolderField() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setMonth(DataHelper.generateDate(1).getMonth());
@@ -113,7 +113,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void buyTestFakeCreditCardCvc() {
+    public void buyTestFakeCardCvc() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setMonth(DataHelper.generateDate(1).getMonth());
@@ -125,7 +125,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void emptyCreditCardCvcField() {
+    public void emptyCardCvcField() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setMonth(DataHelper.generateDate(1).getMonth());
@@ -136,7 +136,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void creditCardMonthExpired() {
+    public void cardMonthExpired() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setMonth(DataHelper.generateDate(-1).getMonth());
@@ -148,7 +148,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void fakeCreditCardMonth() {
+    public void fakeCardMonth() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setMonth("13");
@@ -160,7 +160,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void creditCardZaroMonth() {
+    public void cardZaroMonth() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setMonth("00");
@@ -172,7 +172,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void creditCardEmptyMonthField() {
+    public void cardEmptyMonthField() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setCardHolder(DataHelper.getCardHolder());
@@ -195,7 +195,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void creditCardYearExpired() {
+    public void cardYearExpired() {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setMonth(DataHelper.generateDate(13).getMonth());
