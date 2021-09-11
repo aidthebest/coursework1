@@ -166,7 +166,7 @@ public class PurchaseBuyTestNegative {
         buyPage.setMonth("00");
         buyPage.setCardHolder(DataHelper.getCardHolder());
         buyPage.setCvc(DataHelper.getCvc());
-        buyPage.setYear(DataHelper.generateDate(0).getYear());
+        buyPage.setYear(DataHelper.generateDate(13).getYear());
         buyPage.confirmButtonClick();
         buyPage.failedCardMonthField();
     }

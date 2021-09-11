@@ -169,7 +169,7 @@ public class PurchaseWithCreditNegativeTest {
         buyWithCreditPage.setMonth("00");
         buyWithCreditPage.setCardHolderfield(DataHelper.getCardHolder());
         buyWithCreditPage.setCvc(DataHelper.getCvc());
-        buyWithCreditPage.setYearfield(DataHelper.generateDate(0).getYear());
+        buyWithCreditPage.setYearfield(DataHelper.generateDate(13).getYear());
         buyWithCreditPage.confirmButtonClick();
         buyWithCreditPage.failedCreditCardMonthField();
     }
