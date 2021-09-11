@@ -49,11 +49,11 @@ public class PurchaseTestPositive {
     @Test
     public void buyTestApproveCreditCard() {
         var buyWithCreditPage = purchasePage.buyWithCreditButtonClick();
-        buyWithCreditPage.setCardNumber(DataHelper.getApproveCard());
+        buyWithCreditPage.setCardNumberField(DataHelper.getApproveCard());
         buyWithCreditPage.setMonth(DataHelper.generateDate(1).getMonth());
-        buyWithCreditPage.setCardHolder(DataHelper.getCardHolder());
+        buyWithCreditPage.setCardHolderfield(DataHelper.getCardHolder());
         buyWithCreditPage.setCvc(DataHelper.getCvc());
-        buyWithCreditPage.setYear(DataHelper.generateDate(13).getYear());
+        buyWithCreditPage.setYearfield(DataHelper.generateDate(13).getYear());
         buyWithCreditPage.confirmButtonClick();
         buyWithCreditPage.successMesage();
         assertEquals("APPROVED", DbInfo.getStatusCredit());

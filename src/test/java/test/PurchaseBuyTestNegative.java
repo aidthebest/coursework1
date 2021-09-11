@@ -218,7 +218,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void cleanAllFields () {
+    public void cleanAllFieldsWithErrors () {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getFakeCardNumber());
         buyPage.setYear(DataHelper.generateDate(-60).getYear());
@@ -231,7 +231,7 @@ public class PurchaseBuyTestNegative {
     }
 
     @Test
-    public void cleanAllFields2 () {
+    public void cleanAllFieldsWithoutErrors () {
         var buyPage = purchasePage.buyButtonClick();
         buyPage.setCardNumber(DataHelper.getApproveCard());
         buyPage.setYear(DataHelper.generateDate(5).getYear());

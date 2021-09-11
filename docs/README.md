@@ -15,10 +15,10 @@
 1. Открыть проект в Intellej IDE Ultimate Edition
 2. В превом окне терминала выполнить команду docker-compose up
 3. Дождаться запуска СУБД MySQL, СУБД PostgreSQL, Node
-4. Открыть новое окно терминала и выполнить команду java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar для запуска и интеграции приложения с базой MySQL 
-   или выполнить команду java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar для запуска и интеграции приложения с базой PostgreSQL
-5. Запустить тесты командой ./gradlew "-Ddatasource.url=jdbc:mysql://localhost:3306/app" clean test для СУБД MySQL  
-   или ./gradlew "-Ddatasource.url=jdbc:postgresql://localhost:5432/app" clean test для СУБД PostgreSQL
+4. Открыть новое окно терминала и выполнить команду `java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar` для запуска и интеграции приложения с базой MySQL 
+   или выполнить команду `java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar` для запуска и интеграции приложения с базой PostgreSQL
+5. Запустить тесты командой `./gradlew "-Ddatasource.url=jdbc:mysql://localhost:3306/app" clean test` для СУБД MySQL  
+   или `./gradlew "-Ddatasource.url=jdbc:postgresql://localhost:5432/app"` clean test для СУБД PostgreSQL
 
 ## Лицензия
 

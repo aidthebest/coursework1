@@ -16,11 +16,11 @@ import static org.openqa.selenium.Keys.DELETE;
 public class BuyWithCreditPage {
 
     private SelenideElement confirmButton = $(withText("Продолжить"));
-    private SelenideElement cardNumber = $("[class=input__control]");
-    private SelenideElement month = $$("[class=input__control]").get(1);
-    private SelenideElement year = $$("[class=input__control]").get(2);
-    private SelenideElement cardHolder = $$("[class=input__control]").get(3);
-    private SelenideElement code = $$("[class=input__control]").get(4);
+    private SelenideElement cardNumberField = $("[class=input__control]");
+    private SelenideElement monthField = $$("[class=input__control]").get(1);
+    private SelenideElement yearfield = $$("[class=input__control]").get(2);
+    private SelenideElement cardHolderfield = $$("[class=input__control]").get(3);
+    private SelenideElement codefield = $$("[class=input__control]").get(4);
     private SelenideElement heading = $(withText("Кредит по данным карты"));
 
     private SelenideElement cardNumberErrorField = $(withText("Номер карты")).parent().$("[class=input__sub]");
@@ -37,36 +37,36 @@ public class BuyWithCreditPage {
     }
 
     public void cleanAllFormFields () {
-        cardNumber.doubleClick().sendKeys(CONTROL + "A", DELETE);
-        month.doubleClick().sendKeys(DELETE);
-        year.doubleClick().sendKeys(DELETE);
-        cardHolder.doubleClick().sendKeys(CONTROL + "A", DELETE);
-        code.doubleClick().sendKeys(DELETE);
+        cardNumberField.doubleClick().sendKeys(CONTROL + "A", DELETE);
+        monthField.doubleClick().sendKeys(DELETE);
+        yearfield.doubleClick().sendKeys(DELETE);
+        cardHolderfield.doubleClick().sendKeys(CONTROL + "A", DELETE);
+        codefield.doubleClick().sendKeys(DELETE);
     }
 
     public void confirmButtonClick() {
         confirmButton.click();
     }
 
-    public void setCardNumber(String number) {
-        cardNumber.setValue(number);
+    public void setCardNumberField(String number) {
+        cardNumberField.setValue(number);
     }
 
     public void setMonth(String cardMonth) {
-        month.doubleClick().sendKeys(Keys.DELETE);
-        month.setValue(cardMonth);
+        monthField.doubleClick().sendKeys(Keys.DELETE);
+        monthField.setValue(cardMonth);
     }
 
-    public void setYear(String cardYear) {
-        year.setValue(cardYear);
+    public void setYearfield(String cardYear) {
+        yearfield.setValue(cardYear);
     }
 
-    public void setCardHolder(String owner) {
-        cardHolder.setValue(owner);
+    public void setCardHolderfield(String owner) {
+        cardHolderfield.setValue(owner);
     }
 
     public void setCvc(String codeCvc) {
-        code.setValue(codeCvc);
+        codefield.setValue(codeCvc);
     }
 
     public void successMesage() {
