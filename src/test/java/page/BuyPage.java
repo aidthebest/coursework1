@@ -26,8 +26,8 @@ public class BuyPage {
     private static SelenideElement monthErrorField = $(withText("Месяц")).parent().$("[class=input__sub]");
     private static SelenideElement yearErrorField = $(withText("Год")).parent().$("[class=input__sub]");
     private static SelenideElement cvcErrorField = $(withText("CVC/CVV")).parent().$("[class=input__sub]");
+    private static SelenideElement cardHolderErrorfield = $(withText("Номер карты")).parent().$("[class=input__sub]");
 
-    private static SelenideElement exeptionMessage = $("[class=input__sub]");
 
     public BuyPage() {
         heading.shouldBe(Condition.visible);
@@ -80,11 +80,11 @@ public class BuyPage {
     }
 
     public void emptyCardHolderFieldMessage() {
-        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Поле обязательно для заполнения"));
+        cardHolderErrorfield.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
 
     public void failedCardHolderMessage () {
-        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+        cardHolderErrorfield.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
     }
 
     public void failedCardNumberField() {
@@ -116,6 +116,11 @@ public class BuyPage {
     }
 
     public void withOutExaption () {
-        assertFalse(exeptionMessage.isDisplayed());
+        assertFalse(cvcErrorField.isDisplayed());
+        assertFalse(yearErrorField.isDisplayed());
+        assertFalse(monthErrorField.isDisplayed());
+        assertFalse(cardNumberErrorField.isDisplayed());
+        assertFalse(cardHolderErrorfield.isDisplayed());
+
     }
 }

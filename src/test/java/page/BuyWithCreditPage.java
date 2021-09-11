@@ -27,6 +27,8 @@ public class BuyWithCreditPage {
     private SelenideElement monthErrorField = $(withText("Месяц")).parent().$("[class=input__sub]");
     private SelenideElement yearErrorField = $(withText("Год")).parent().$("[class=input__sub]");
     private SelenideElement cvcErrorField = $(withText("CVC/CVV")).parent().$("[class=input__sub]");
+    private SelenideElement cardHolderErrorfield = $(withText("Владелец")).parent().$("[class=input__sub]");
+
 
     private static SelenideElement exeptionMessage = $("[class=input__sub]");
 
@@ -82,11 +84,11 @@ public class BuyWithCreditPage {
     }
 
     public void emptyCardHolderFieldMessage() {
-        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Поле обязательно для заполнения"));
+        cardHolderErrorfield.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
 
     public void failedCreditCardHolderMessage () {
-        $("[class=input__sub]").shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
+        cardHolderErrorfield.shouldBe(Condition.visible, Duration.ofSeconds(14)).shouldHave(Condition.exactText("Неверный формат"));
     }
 
     public void failedCreditCardNumberField() {
@@ -118,6 +120,11 @@ public class BuyWithCreditPage {
     }
 
     public void withOutExaption () {
-        assertFalse(exeptionMessage.isDisplayed());
+        assertFalse(cvcErrorField.isDisplayed());
+        assertFalse(yearErrorField.isDisplayed());
+        assertFalse(monthErrorField.isDisplayed());
+        assertFalse(cardNumberErrorField.isDisplayed());
+        assertFalse(cardHolderErrorfield.isDisplayed());
+
     }
 }
