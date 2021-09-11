@@ -26,7 +26,7 @@ public class BuyPage {
     private static SelenideElement monthErrorField = $(withText("Месяц")).parent().$("[class=input__sub]");
     private static SelenideElement yearErrorField = $(withText("Год")).parent().$("[class=input__sub]");
     private static SelenideElement cvcErrorField = $(withText("CVC/CVV")).parent().$("[class=input__sub]");
-    private static SelenideElement cardHolderErrorfield = $(withText("Номер карты")).parent().$("[class=input__sub]");
+    private static SelenideElement cardHolderErrorfield = $(withText("Владелец")).parent().$("[class=input__sub]");
 
 
     public BuyPage() {
