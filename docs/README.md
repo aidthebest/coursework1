@@ -19,6 +19,9 @@
    или выполнить команду `java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar` для запуска и интеграции приложения с базой PostgreSQL
 5. Запустить тесты командой `./gradlew "-Ddatasource.url=jdbc:mysql://localhost:3306/app" clean test` для СУБД MySQL  
    или `./gradlew "-Ddatasource.url=jdbc:postgresql://localhost:5432/app"` clean test для СУБД PostgreSQL
+6. Для получения отчетов Allure необходимо ввести команду `./gradlew allureserve` находясь в корневой папке
+7. Для завершения работы контейнеров Docker  использовать команду `docker-compose down` находясь в корневой папке
+
 
 ## Лицензия
 
@@ -31,20 +34,3 @@
 3. Отчетные документы по итогам автоматизации - 
 
 
-[comment]: <> (java -jar artifacts/aqa-shop.jar --spring.config.location=./application.postgres.properties)
-
-[comment]: <> (- запускаем приложение с доступом в постгрес)
-
-[comment]: <> (java -jar artifacts/aqa-shop.jar --spring.config.location=./application.mysql.properties)
-
-[comment]: <> (запускать SUT с помощью команды вида &#40;для mysql&#41;)
-
-[comment]: <> (java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar)
-
-[comment]: <> (тесты с помощью)
-
-[comment]: <> (./gradlew "-Ddatasource.url=jdbc:mysql://localhost:3306/app" clean test)
-
-[comment]: <> (URL базы данных в коде можно будет получить с помощью)
-
-[comment]: <> (System.getProperty&#40;"datasource.url"&#41;)
