@@ -30,7 +30,7 @@
 ## Документация к проекту
 
 1. [План тестирования](https://github.com/aidthebest/coursework1/blob/master/docs/Plan.md) 
-2. [Отчетные документы по итогам автоматизирвоанного тестирования](https://github.com/aidthebest/coursework1/blob/master/docs/Plan.md)
-3. [Отчетные документы по итогам автоматизации](https://github.com/aidthebest/coursework1/blob/master/docs/Plan.md)
+2. [Отчетные документы по итогам автоматизирвоанного тестирования](https://github.com/aidthebest/coursework1/blob/master/docs/Report.md)
+3. [Отчетные документы по итогам автоматизации](https://github.com/aidthebest/coursework1/blob/master/docs/Summary.md)
 
 
