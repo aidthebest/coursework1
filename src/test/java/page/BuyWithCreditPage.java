@@ -29,11 +29,6 @@ public class BuyWithCreditPage {
     private SelenideElement cvcErrorField = $(withText("CVC/CVV")).parent().$("[class=input__sub]");
     private SelenideElement cardHolderErrorfield = $(withText("Владелец")).parent().$("[class=input__sub]");
 
-
-    private static SelenideElement exeptionMessage = $("[class=input__sub]");
-
-
-
     public BuyWithCreditPage() {
         heading.shouldBe(Condition.visible);
     }
